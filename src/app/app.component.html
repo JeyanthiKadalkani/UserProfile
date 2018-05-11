@@ -1,0 +1,122 @@
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <form class="navbar-form navbar-left">
+            <input type="text" class="form-control" placeholder="Search Contact..." 
+            [ngModelOptions]="{standalone: true}" [(ngModel)]="searchText">
+        </form>
+        <form class="navbar-form navbar-right">
+            <label class="userName">{{userName}} </label>
+            <img class="profileImg" src="http://www.fillmurray.com/200/200"/>
+        </form>
+
+      </div>
+    </nav>
+
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-3 col-md-2 sidebar">
+        <div class="nav nav-sidebar">
+          <table>
+          <div *ngFor="let ppl of pplName | filter : searchText" class="userHighlight">
+             <tr class="ppl_Sidebar">
+             <td>
+              <a   (click)="getPplData($event)"> {{ppl}}</a>
+             </td>
+             </tr>
+            
+          </div>
+          </table>
+        </div>
+       </div>
+      <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <h1 class="page-header"></h1>
+          <div *ngIf="isEnable">
+            <table>
+              <tr >
+                <td rowspan="2">
+              <img src="{{image}}" class="userImg" />
+                </td>
+                <td>
+              <button (click)="sendMsg()" class="sendBtn">SEND MESSAGE </button>
+                </td>
+              </tr>
+              <tr>
+                <td>
+              <span class="userRating">
+                  <span *ngIf="rating==2">
+                  <i class="fas fa-heart fa-3x"></i>
+                  <i class="fas fa-heart fa-3x"></i>
+                  <i class="far fa-heart fa-3x"></i>
+                  <i class="far fa-heart fa-3x"></i>
+                  <i class="far fa-heart fa-3x"></i>
+                  </span>
+                  <span *ngIf="rating==3">
+                  <i class="fas fa-heart fa-3x"></i>
+                  <i class="fas fa-heart fa-3x"></i>
+                  <i class="fas fa-heart fa-3x"></i>
+                  <i class="far fa-heart fa-3x"></i>
+                  <i class="far fa-heart fa-3x"></i>
+                  </span>
+                  <span *ngIf="rating==4">
+                  <i class="fas fa-heart fa-3x"></i>
+                  <i class="fas fa-heart fa-3x"></i>
+                  <i class="fas fa-heart fa-3x"></i>
+                  <i class="fas fa-heart fa-3x"></i>
+                  
+                  <i class="far fa-heart fa-3x"></i>
+                  </span>
+                  <span *ngIf="rating==5">
+                  <i class="fas fa-heart fa-3x"></i>
+                  <i class="fas fa-heart fa-3x"></i>
+                  <i class="fas fa-heart fa-3x"></i>
+                  <i class="fas fa-heart fa-3x"></i>
+                  <i class="fas fa-heart fa-3x"></i>
+                  </span>
+              </span>
+              </td></tr>
+              </table>
+              <br>
+              <div class="userDec">
+              {{description}}
+              </div>
+              <br/>
+              <table class="table table-striped likesUser">
+              <thead>
+                <tr class="headerLike">
+                  <th>Likes</th>
+                  <th>Dislikes</th>
+                  
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                <ng-container *ngFor="let like of likes">
+                <tr>
+                  <td>{{like}}</td>
+                </tr>
+                </ng-container>
+                </td>
+                 <td>
+                <ng-container *ngFor="let dislike of dislikes">
+                <tr>
+                  <td>{{dislike}}</td>
+                </tr>
+                </ng-container>
+                </td>
+                </tr>
+              </tbody>
+            </table>
+              
+          </div>
+      </div>
+   </div>
+ </div>
+
+
+
+
+
+
